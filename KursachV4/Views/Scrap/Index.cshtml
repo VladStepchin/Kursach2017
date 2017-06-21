@@ -1,0 +1,64 @@
+﻿@model IEnumerable<KursachV4.Scrap>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Scraps</h2>
+
+<table class="striped bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Density)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Store.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Density)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Store.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div style="margin-top:15px;"class="additional-action">
+        <a href=@Url.RouteUrl("ConvertHtmlPageToPdf") class="waves-effect waves-light btn-large">Оформити звіт</a>
+    </div>
+}
+
+<a class="waves-effect waves-light btn-large add-metal" href="@Url.RouteUrl("CreateMetal")">Додати метал</a>

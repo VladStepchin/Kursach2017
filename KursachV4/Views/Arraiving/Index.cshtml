@@ -1,0 +1,70 @@
+﻿@model IEnumerable<KursachV4.Arraiving>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="striped bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Provider.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Scrap.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArravingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Store.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provider.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scrap.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArravingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Store.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<a class="waves-effect waves-light btn-large add-metal" href="@Url.RouteUrl("CreateArraiving")">Додати прибуття</a>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div style="margin-top:12px;" class="additional-action">
+        <a href=@Url.RouteUrl("ArraivingDetails") class="waves-effect waves-light btn-large">Деталі металів</a>
+    </div>
+}

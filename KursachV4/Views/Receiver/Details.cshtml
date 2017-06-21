@@ -1,0 +1,57 @@
+﻿@model KursachV4.Receiver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Receiver</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirmTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirmTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telephone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telephone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Account)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Account)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContactPerson)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContactPerson)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

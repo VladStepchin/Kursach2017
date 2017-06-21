@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ScrapMetalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Metal-Scrap.dbo.Arraiving" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Arraiving">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Cost" />
+      <PropertyRef Name="Amount" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProviderId" Type="int" />
+    <Property Name="ScrapId" Type="int" />
+    <Property Name="ArravingDate" Type="datetime" />
+    <Property Name="Cost" Type="float" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="StoreId" Type="int" />
+  </EntityType>
+  <EntityType Name="Consumption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReceiverId" Type="int" />
+    <Property Name="ScrapId" Type="int" />
+    <Property Name="ArravingDate" Type="datetime" />
+    <Property Name="Cost" Type="float" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="StoreId" Type="int" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PassportCode" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Receiver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirmTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyCode" Type="varchar" MaxLength="25" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Account" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Scrap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Density" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="StoreId" Type="int" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Responsible" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Metal-Scrap.dbo.Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Metal-Scrap.dbo.ColumnsCount" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="ColumnsCount">
+    <Key>
+      <PropertyRef Name="table_name" />
+    </Key>
+    <Property Name="Count" Type="int" />
+    <Property Name="table_name" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Metal-Scrap.dbo.DetailsOfArraivedMetal" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="DetailsOfArraivedMetal">
+    <Key>
+      <PropertyRef Name="Density" />
+      <PropertyRef Name="Cost" />
+    </Key>
+    <Property Name="Density" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="ScrapId" Type="int" />
+    <Property Name="Cost" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Metal-Scrap.dbo.ProviderReceiverInterconnection" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="ProviderReceiverInterconnection">
+    <Key>
+      <PropertyRef Name="FirmTitle" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Surname" />
+    </Key>
+    <Property Name="FirmTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Metal-Scrap.dbo.VIPProviders" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VIPProviders">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Surname" />
+      <PropertyRef Name="Amount" />
+    </Key>
+    <Property Name="Name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PassportCode" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Arraiving__Provi__21B6055D">
+    <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+    <End Role="Arraiving" Type="Self.Arraiving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Arraiving">
+        <PropertyRef Name="ProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Arraiving__Scrap__22AA2996">
+    <End Role="Scrap" Type="Self.Scrap" Multiplicity="0..1" />
+    <End Role="Arraiving" Type="Self.Arraiving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scrap">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Arraiving">
+        <PropertyRef Name="ScrapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Arraiving__Store__24927208">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Arraiving" Type="Self.Arraiving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Arraiving">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consumpti__Recei__2D27B809">
+    <End Role="Receiver" Type="Self.Receiver" Multiplicity="0..1" />
+    <End Role="Consumption" Type="Self.Consumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receiver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consumption">
+        <PropertyRef Name="ReceiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consumpti__Scrap__2E1BDC42">
+    <End Role="Scrap" Type="Self.Scrap" Multiplicity="0..1" />
+    <End Role="Consumption" Type="Self.Consumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scrap">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consumption">
+        <PropertyRef Name="ScrapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consumpti__Store__300424B4">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Consumption" Type="Self.Consumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consumption">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Scrap__StoreId__1B0907CE">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Scrap" Type="Self.Scrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scrap">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ScrapMetalModelContainer">
+    <EntitySet Name="Consumption" EntityType="Self.Consumption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receiver" EntityType="Self.Receiver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Scrap" EntityType="Self.Scrap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Arraiving" EntityType="Self.Arraiving" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Arraiving].[Id] AS [Id], 
+[Arraiving].[ProviderId] AS [ProviderId], 
+[Arraiving].[ScrapId] AS [ScrapId], 
+[Arraiving].[ArravingDate] AS [ArravingDate], 
+[Arraiving].[Cost] AS [Cost], 
+[Arraiving].[Amount] AS [Amount], 
+[Arraiving].[StoreId] AS [StoreId]
+FROM [dbo].[Arraiving] AS [Arraiving]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Users].[Id] AS [Id], 
+[Users].[Login] AS [Login], 
+[Users].[Password] AS [Password]
+FROM [dbo].[Users] AS [Users]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ColumnsCount" EntityType="Self.ColumnsCount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ColumnsCount].[Count] AS [Count], 
+[ColumnsCount].[table_name] AS [table_name]
+FROM [dbo].[ColumnsCount] AS [ColumnsCount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DetailsOfArraivedMetal" EntityType="Self.DetailsOfArraivedMetal" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[DetailsOfArraivedMetal].[Density] AS [Density], 
+[DetailsOfArraivedMetal].[Description] AS [Description], 
+[DetailsOfArraivedMetal].[ScrapId] AS [ScrapId], 
+[DetailsOfArraivedMetal].[Cost] AS [Cost]
+FROM [dbo].[DetailsOfArraivedMetal] AS [DetailsOfArraivedMetal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProviderReceiverInterconnection" EntityType="Self.ProviderReceiverInterconnection" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ProviderReceiverInterconnection].[FirmTitle] AS [FirmTitle], 
+[ProviderReceiverInterconnection].[Name] AS [Name], 
+[ProviderReceiverInterconnection].[Surname] AS [Surname]
+FROM [dbo].[ProviderReceiverInterconnection] AS [ProviderReceiverInterconnection]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIPProviders" EntityType="Self.VIPProviders" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[VIPProviders].[Name] AS [Name], 
+[VIPProviders].[Surname] AS [Surname], 
+[VIPProviders].[PassportCode] AS [PassportCode], 
+[VIPProviders].[Address] AS [Address], 
+[VIPProviders].[Telephone] AS [Telephone], 
+[VIPProviders].[Amount] AS [Amount]
+FROM [dbo].[VIPProviders] AS [VIPProviders]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Arraiving__Provi__21B6055D" Association="Self.FK__Arraiving__Provi__21B6055D">
+      <End Role="Provider" EntitySet="Provider" />
+      <End Role="Arraiving" EntitySet="Arraiving" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Arraiving__Scrap__22AA2996" Association="Self.FK__Arraiving__Scrap__22AA2996">
+      <End Role="Scrap" EntitySet="Scrap" />
+      <End Role="Arraiving" EntitySet="Arraiving" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Arraiving__Store__24927208" Association="Self.FK__Arraiving__Store__24927208">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Arraiving" EntitySet="Arraiving" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consumpti__Recei__2D27B809" Association="Self.FK__Consumpti__Recei__2D27B809">
+      <End Role="Receiver" EntitySet="Receiver" />
+      <End Role="Consumption" EntitySet="Consumption" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consumpti__Scrap__2E1BDC42" Association="Self.FK__Consumpti__Scrap__2E1BDC42">
+      <End Role="Scrap" EntitySet="Scrap" />
+      <End Role="Consumption" EntitySet="Consumption" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consumpti__Store__300424B4" Association="Self.FK__Consumpti__Store__300424B4">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Consumption" EntitySet="Consumption" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Scrap__StoreId__1B0907CE" Association="Self.FK__Scrap__StoreId__1B0907CE">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Scrap" EntitySet="Scrap" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
